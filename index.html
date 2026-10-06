@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Key Link Digital Solutions · Digital Profile</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;500;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #10243a;
+      --ink2: #1a3553;
+      --card: #fbf8f2;
+      --text: #14202e;
+      --muted: #5d6b7a;
+      --line: #e4ddcf;
+      --amber: #f2b134;
+      --amberText: #14202e;
+      --tile: #fff;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --card: #17293d;
+        --text: #f2ede3;
+        --muted: #9fb0c2;
+        --line: #2a4058;
+        --tile: #1e344b;
+        --ink: #0a1624;
+        --ink2: #0f2236
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --card: #17293d;
+      --text: #f2ede3;
+      --muted: #9fb0c2;
+      --line: #2a4058;
+      --tile: #1e344b;
+      --ink: #0a1624;
+      --ink2: #0f2236
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px)
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0
+    }
+
+    body {
+      font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--ink);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 20px 16px 40px;
+      background-image: radial-gradient(circle at 50% -10%, var(--ink2), var(--ink) 60%)
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 420px
+    }
+
+    .tap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #cfd9e4;
+      font-size: 13px;
+      margin: 6px 0 18px
+    }
+
+    .pulse {
+      position: relative;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--amber)
+    }
+
+    .pulse::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid var(--amber);
+      animation: ring 1.6s ease-out 3
+    }
+
+    @keyframes ring {
+      to {
+        transform: scale(3.4);
+        opacity: 0
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .55)
+    }
+
+    .cover {
+      height: 112px;
+      background: linear-gradient(135deg, #1c4a6e, #10243a);
+      position: relative
+    }
+
+    .cover svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: .35
+    }
+
+    .avatar {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      margin: -52px auto 0;
+      position: relative;
+      display: block;
+      object-fit: cover;
+      border: 5px solid var(--card);
+      background: var(--amber);
+      box-shadow: 0 10px 24px rgba(19, 18, 25, .18)
+    }
+
+    .id {
+      text-align: center;
+      padding: 14px 24px 6px
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -.02em
+    }
+
+    .role {
+      color: var(--muted);
+      margin-top: 4px;
+      font-size: 15px
+    }
+
+    .bio {
+      margin: 14px auto 0;
+      max-width: 30ch;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text)
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 20px 20px 4px
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px;
+      border-radius: 16px;
+      font: inherit;
+      font-weight: 700;
+      font-size: 15px;
+      border: 0;
+      cursor: pointer;
+      text-decoration: none
+    }
+
+    .btn.primary {
+      background: var(--amber);
+      color: var(--amberText)
+    }
+
+    .btn.ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--line)
+    }
+
+    .links {
+      padding: 16px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      border-radius: 18px;
+      background: var(--tile);
+      border: 1px solid var(--line);
+      color: var(--text);
+      text-decoration: none;
+      transition: transform .15s, border-color .15s
+    }
+
+    .link:hover {
+      border-color: var(--amber);
+      transform: translateY(-1px)
+    }
+
+    .ico {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      flex: none
+    }
+
+    .ico svg {
+      width: 24px;
+      height: 24px;
+      fill: #fff
+    }
+
+    .fb {
+      background: #1877f2
+    }
+
+    .ig {
+      background: linear-gradient(45deg, #f9a03f, #e1306c 55%, #7b3fe4)
+    }
+
+    .gm {
+      background: #ea4335
+    }
+
+    .link b {
+      display: block;
+      font-size: 16px
+    }
+
+    .link span {
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    .chev {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 20px
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--amber);
+      outline-offset: 2px
+    }
+
+    footer {
+      text-align: center;
+      color: #8da0b4;
+      font-size: 12px;
+      margin-top: 18px
+    }
+
+    /* sheet */
+    .sheet-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 12, 20, .6);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 10
+    }
+
+    .sheet-bg.open {
+      display: flex
+    }
+
+    .sheet {
+      width: 100%;
+      max-width: 420px;
+      background: var(--card);
+      border-radius: 28px 28px 0 0;
+      padding: 22px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+      animation: up .25s ease-out
+    }
+
+    @keyframes up {
+      from {
+        transform: translateY(40px);
+        opacity: 0
+      }
+    }
+
+    .sheet h2 {
+      font-size: 20px;
+      margin-bottom: 14px
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 0;
+      border-top: 1px solid var(--line)
+    }
+
+    .row div {
+      flex: 1;
+      min-width: 0
+    }
+
+    .row small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px
+    }
+
+    .row strong {
+      font-weight: 500;
+      overflow-wrap: anywhere
+    }
+
+    .mini {
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none
+    }
+
+    .close {
+      margin-top: 14px;
+      width: 100%
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--amber);
+      color: var(--amberText);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s;
+      z-index: 20
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%)
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      * {
+        animation: none !important;
+        transition: none !important
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <div class="tap"><span class="pulse"></span>Tap detected. Profile opened.</div>
+
+    <article class="card">
+      <div class="cover" aria-hidden="true">
+        <svg viewBox="0 0 400 112" preserveAspectRatio="xMidYMid slice">
+          <g fill="none" stroke="#f2b134" stroke-width="1.5">
+            <circle cx="330" cy="56" r="20" />
+            <circle cx="330" cy="56" r="38" />
+            <circle cx="330" cy="56" r="58" />
+            <circle cx="330" cy="56" r="80" />
+          </g>
+        </svg>
+      </div>
+      <img class="avatar" src="KL.png" alt="KL Digital Solutions avatar" />
+      <section class="id">
+        <h1>Key Link Digital Solutions</h1>
+        <p class="role">Digital Marketing Agency</p>
+        <p class="bio">Helping businesses grow their online presence and drive results. Say hello below.</p>
+      </section>
+
+      <div class="actions">
+        <button class="btn primary" id="openContact" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12a4 4 0 100-8 4 4 0 000 8zm0 2c-3.3 0-8 1.7-8 5v1h16v-1c0-3.3-4.7-5-8-5z" />
+          </svg>Contact
+        </button>
+        <button class="btn ghost" id="shareBtn" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M18 16a3 3 0 00-2.4 1.2L8.9 13.800a3 3 0 000-3.600l6.700-3.400A3 3 0 1015 5a3 3 0 00.1.7L8.400 9.100a3 3 0 100 5.800l6.700 3.400A3 3 0 1018 16z" />
+          </svg>Share
+        </button>
+      </div>
+
+      <nav class="links" aria-label="Social links">
+        <a class="link" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">
+          <span class="ico fb"><svg viewBox="0 0 24 24">
+              <path
+                d="M13.500 21v-8h2.700l.4-3.200h-3.100V7.800c0-.9.3-1.500 1.600-1.500h1.700V3.400c-.3 0-1.300-.1-2.400-.1-2.400 0-4 1.500-4 4.100v2.400H7.700V13h2.700v8z" />
+            </svg></span>
+          <div><b>Facebook</b><span>Follow my page</span></div><span class="chev">›</span>
+        </a>
+        <a class="link" href="https://www.instagram.com/keylink10042026/" target="_blank" rel="noopener">
+          <span class="ico ig"><svg viewBox="0 0 24 24">
+              <path
+                d="M7.500 3h9A4.500 4.500 0 0121 7.500v9a4.500 4.500 0 01-4.500 4.500h-9A4.500 4.500 0 013 16.500v-9A4.500 4.500 0 017.500 3zm0 1.800A2.700 2.700 0 004.800 7.500v9a2.700 2.700 0 002.700 2.700h9a2.700 2.700 0 002.700-2.700v-9a2.700 2.700 0 00-2.700-2.700zM12 7.500a4.500 4.500 0 110 9 4.500 4.500 0 010-9zm0 1.800a2.700 2.700 0 100 5.400 2.700 2.700 0 000-5.400zm4.800-2.900a1.100 1.100 0 110 2.200 1.100 1.100 0 010-2.200z" />
+            </svg></span>
+          <div><b>Instagram</b><span>@keylink10042026</span></div><span class="chev">›</span>
+        </a>
+        <a class="link" href="keylink10042026@gmail.com" target="_blank" rel="noopener">
+          <span class="ico gm"><svg viewBox="0 0 24 24">
+              <path
+                d="M3 6.500A1.500 1.500 0 014.500 5h15A1.500 1.500 0 0121 6.500v11a1.500 1.500 0 01-1.500 1.500h-15A1.500 1.500 0 013 17.500zm2 .9v.2l7 5 7-5v-.2l-.5-.4L12 11.800 5.500 7z" />
+            </svg></span>
+          <div><b>Gmail</b><span>keylink10042026@gmail.com</span></div><span class="chev">›</span>
+        </a>
+      </nav>
+    </article>
+    <footer>Tap your phone to the NFC tag to open this profile anytime.</footer>
+  </main>
+
+  <div class="sheet-bg" id="sheetBg" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet">
+      <h2 id="sheetTitle">Contact details</h2>
+      <div class="row">
+        <div><small>Phone</small><strong>+63 917 000 0000</strong></div>
+        <a class="mini" href="tel:+639170000000">Call</a><button class="mini" data-copy="+63 917 000 0000"
+          type="button">Copy</button>
+      </div>
+      <div class="row">
+        <div><small>Email</small><strong>keylink10042026@gmail.com</strong></div>
+        <a class="mini" href="mailto:keylink10042026@gmail.com">Email</a><button class="mini" data-copy="keylink10042026@gmail.com"
+          type="button">Copy</button>
+      </div>
+      <div class="row">
+        <div><small>Company</small><strong>Key Link Digital Solutions</strong></div>
+        <button class="mini" data-copy="Key Link Digital Solutions" type="button">Copy</button>
+      </div>
+      <button class="btn ghost close" id="closeSheet" type="button">Close</button>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    (function () {
+      var bg = document.getElementById('sheetBg'), toast = document.getElementById('toast'), t;
+      function say(m) { toast.textContent = m; toast.classList.add('show'); clearTimeout(t); t = setTimeout(function () { toast.classList.remove('show') }, 1800) }
+      function copy(v) {
+        if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(v).then(function () { say('Copied') }, fallback) } else fallback();
+        function fallback() { var a = document.createElement('textarea'); a.value = v; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); say('Copied') } catch (e) { say('Copy not available') } a.remove() }
+      }
+      document.getElementById('openContact').onclick = function () { bg.classList.add('open'); document.getElementById('closeSheet').focus() };
+      function close() { bg.classList.remove('open') }
+      document.getElementById('closeSheet').onclick = close;
+      bg.addEventListener('click', function (e) { if (e.target === bg) close() });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close() });
+      document.querySelectorAll('[data-copy]').forEach(function (b) { b.onclick = function () { copy(b.dataset.copy) } });
+      document.getElementById('shareBtn').onclick = function () {
+        var d = { title: 'Key Link Digital Solutions', text: 'My digital profile', url: location.href };
+        if (navigator.share) { navigator.share(d).catch(function () { }) } else copy(location.href);
+      };
+    })();
+  </script>
+</body>
+
+</html>

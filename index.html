@@ -1,504 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Key Link Digital Solutions · Digital Profile</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;500;700;800&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --ink: #10243a;
-      --ink2: #1a3553;
-      --card: #fbf8f2;
-      --text: #14202e;
-      --muted: #5d6b7a;
-      --line: #e4ddcf;
-      --amber: #ffffff;
-      --amberText: #14202e;
-      --tile: #fff;
-      box-sizing: border-box;
-      padding-top: env(safe-area-inset-top, 0px);
-      padding-bottom: env(safe-area-inset-bottom, 0px);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root:not([data-theme="light"]) {
-        --card: #17293d;
-        --text: #f2ede3;
-        --muted: #9fb0c2;
-        --line: #2a4058;
-        --tile: #1e344b;
-        --ink: #0a1624;
-        --ink2: #0f2236
-      }
-    }
-
-    :root[data-theme="dark"] {
-      --card: #17293d;
-      --text: #f2ede3;
-      --muted: #9fb0c2;
-      --line: #2a4058;
-      --tile: #1e344b;
-      --ink: #0a1624;
-      --ink2: #0f2236
-    }
-
-    html {
-      scroll-padding-top: env(safe-area-inset-top, 0px)
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0
-    }
-
-    body {
-      font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: var(--ink);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 20px 16px 40px;
-      background-image: radial-gradient(circle at 50% -10%, var(--ink2), var(--ink) 60%)
-    }
-
-    .wrap {
-      width: 100%;
-      max-width: 420px
-    }
-
-    .tap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      color: #cfd9e4;
-      font-size: 13px;
-      margin: 6px 0 18px
-    }
-
-    .pulse {
-      position: relative;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--amber)
-    }
-
-    .pulse::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 2px solid var(--amber);
-      animation: ring 1.6s ease-out 3
-    }
-
-    @keyframes ring {
-      to {
-        transform: scale(3.4);
-        opacity: 0
-      }
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .55)
-    }
-
-    .cover {
-      height: 112px;
-      background: linear-gradient(135deg, #1c4a6e, #10243a);
-      position: relative
-    }
-
-    .cover svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      opacity: .35
-    }
-
-    .avatar {
-      width: 104px;
-      height: 104px;
-      border-radius: 50%;
-      margin: -52px auto 0;
-      position: relative;
-      display: block;
-      object-fit: cover;
-      border: 5px solid var(--card);
-      background: var(--amber);
-      box-shadow: 0 10px 24px rgba(19, 18, 25, .18)
-    }
-
-    .id {
-      text-align: center;
-      padding: 14px 24px 6px
-    }
-
-    h1 {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -.02em
-    }
-
-    .role {
-      color: var(--muted);
-      margin-top: 4px;
-      font-size: 15px
-    }
-
-    .bio {
-      margin: 14px auto 0;
-      max-width: 30ch;
-      font-size: 15px;
-      line-height: 1.5;
-      color: var(--text)
-    }
-
-    .actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      padding: 20px 20px 4px
-    }
-
-    .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px;
-      border-radius: 16px;
-      font: inherit;
-      font-weight: 700;
-      font-size: 15px;
-      border: 0;
-      cursor: pointer;
-      text-decoration: none
-    }
-
-    .btn.primary {
-      background: var(--amber);
-      color: var(--amberText)
-    }
-
-    .btn.ghost {
-      background: transparent;
-      color: var(--text);
-      border: 1.5px solid var(--line)
-    }
-
-    .links {
-      padding: 16px 20px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px
-    }
-
-    .link {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px;
-      border-radius: 18px;
-      background: var(--tile);
-      border: 1px solid var(--line);
-      color: var(--text);
-      text-decoration: none;
-      transition: transform .15s, border-color .15s
-    }
-
-    .link:hover {
-      border-color: var(--amber);
-      transform: translateY(-1px)
-    }
-
-    .ico {
-      width: 44px;
-      height: 44px;
-      border-radius: 13px;
-      display: grid;
-      place-items: center;
-      flex: none
-    }
-
-    .ico svg {
-      width: 24px;
-      height: 24px;
-      fill: #fff
-    }
-
-    .fb {
-      background: #1877f2
-    }
-
-    .ig {
-      background: linear-gradient(45deg, #f9a03f, #e1306c 55%, #7b3fe4)
-    }
-    .tt {
-      background: #000;
-      box-shadow: inset -2px -2px 0 #fe2c55, inset 2px 2px 0 #25f4ee;
-    }
-
-    .gm {
-      background: #ea4335
-    }
-
-    .link b {
-      display: block;
-      font-size: 16px
-    }
-
-    .link span {
-      font-size: 13px;
-      color: var(--muted)
-    }
-
-    .chev {
-      margin-left: auto;
-      color: var(--muted);
-      font-size: 20px
-    }
-
-    :focus-visible {
-      outline: 3px solid var(--amber);
-      outline-offset: 2px
-    }
-
-    footer {
-      text-align: center;
-      color: #8da0b4;
-      font-size: 12px;
-      margin-top: 18px
-    }
-
-    /* sheet */
-    .sheet-bg {
-      position: fixed;
-      inset: 0;
-      background: rgba(5, 12, 20, .6);
-      display: none;
-      align-items: flex-end;
-      justify-content: center;
-      z-index: 10
-    }
-
-    .sheet-bg.open {
-      display: flex
-    }
-
-    .sheet {
-      width: 100%;
-      max-width: 420px;
-      background: var(--card);
-      border-radius: 28px 28px 0 0;
-      padding: 22px 20px calc(24px + env(safe-area-inset-bottom, 0px));
-      animation: up .25s ease-out
-    }
-
-    @keyframes up {
-      from {
-        transform: translateY(40px);
-        opacity: 0
-      }
-    }
-
-    .sheet h2 {
-      font-size: 20px;
-      margin-bottom: 14px
-    }
-
-    .row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 0;
-      border-top: 1px solid var(--line)
-    }
-
-    .row div {
-      flex: 1;
-      min-width: 0
-    }
-
-    .row small {
-      display: block;
-      color: var(--muted);
-      font-size: 12px
-    }
-
-    .row strong {
-      font-weight: 500;
-      overflow-wrap: anywhere
-    }
-
-    .mini {
-      padding: 8px 12px;
-      border-radius: 12px;
-      border: 1.5px solid var(--line);
-      background: transparent;
-      color: var(--text);
-      font: inherit;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none
-    }
-
-    .close {
-      margin-top: 14px;
-      width: 100%
-    }
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 28px;
-      transform: translateX(-50%) translateY(20px);
-      background: var(--amber);
-      color: var(--amberText);
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 14px;
-      opacity: 0;
-      pointer-events: none;
-      transition: .25s;
-      z-index: 20
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%)
-    }
-
-    @media (prefers-reduced-motion:reduce) {
-      * {
-        animation: none !important;
-        transition: none !important
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Key Link Digital Solutions · Personalized NFC Gifts</title>
+<meta name="description" content="Personalized NFC cards that turn a simple gift into a message, photo or video the receiver opens with a tap.">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0e0d0b;--black2:#191712;--cream:#f5efe2;--cream2:#ebe3d0;--gold:#5377d8;--goldDeep:#8a6d2f;--ink:#1c1a15;--muted:#6b6455;--mutedD:#b9b19d;
+  box-sizing:border-box}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--cream);color:var(--ink);line-height:1.55;padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:inherit}
+img{max-width:100%}
+.w{width:min(1120px,100% - 40px);margin-inline:auto}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:999px;font:inherit;font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.gold{background:var(--gold);color:var(--black)}
+.gold:hover{background:#131b5f}
+.line{border-color:currentColor;background:transparent}
+h1,h2,h3{letter-spacing:-.02em;line-height:1.12}
+h2{font-size:clamp(28px,4vw,42px);font-weight:800}
+.sec{padding:84px 0}
+.dark{background:var(--black);color:var(--cream)}
+.lead{color:var(--muted);max-width:56ch;margin-top:12px;font-size:17px}
+.dark .lead{color:var(--mutedD)}
+/* nav */
+header{position:sticky;top:0;z-index:50;background:rgba(14,13,11,.94);backdrop-filter:blur(8px);color:var(--cream);padding-top:env(safe-area-inset-top,0px)}
+.nav{display:flex;align-items:center;gap:24px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none;font-size:17px}
+.brand img{width:34px;height:34px;border-radius:50%;object-fit:cover}
+.nav ul{display:flex;gap:26px;list-style:none;padding:0;margin:0 0 0 auto}
+.nav ul a{text-decoration:none;font-size:15px;color:var(--mutedD)}
+.nav ul a:hover{color:var(--cream)}
+.nav .btn{padding:10px 20px}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid #4a4538;color:var(--cream);width:44px;height:44px;border-radius:12px;font-size:20px;cursor:pointer}
+/* hero */
+.hero{background:var(--black);color:var(--cream);padding:72px 0 90px;overflow:hidden}
+.hero .w{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(38px,6vw,68px);font-weight:800}
+.hero p{color:var(--mutedD);font-size:18px;margin:20px 0 32px;max-width:46ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.stage{position:relative;height:380px;display:grid;place-items:center}
+.nfc{width:300px;height:190px;border-radius:20px;background:linear-gradient(145deg,#f8f2e4,#e6dcc3);color:var(--ink);padding:22px;position:relative;transform:rotate(-8deg);box-shadow:0 30px 60px -15px rgba(0,0,0,.7)}
+.nfc b{display:block;font-size:20px;line-height:1.2;max-width:12ch}
+.nfc small{position:absolute;left:22px;bottom:18px;color:var(--goldDeep);font-weight:700;font-size:12px}
+.waves{position:absolute;right:20px;top:20px;width:46px}
+.pulse{position:absolute;right:-36px;top:30px;width:54px;height:54px;border-radius:50%;border:2px solid var(--gold);animation:p 2.4s ease-out infinite}
+.pulse:nth-child(2){animation-delay:.8s}
+@keyframes p{from{transform:scale(.4);opacity:.9}to{transform:scale(2.2);opacity:0}}
+.phone{position:absolute;right:6%;bottom:0;width:170px;height:320px;border-radius:30px;background:#0a0a09;border:6px solid #2b2820;box-shadow:0 30px 60px -15px rgba(0,0,0,.8);padding:18px 14px;transform:rotate(5deg)}
+/* samples (mini phone screens) */
+.scr{background:var(--cream);color:var(--ink);border-radius:18px;padding:16px;text-align:center;height:100%;display:flex;flex-direction:column;justify-content:center;gap:8px;font-size:12px;position:relative;overflow:hidden}
+.scr h4{font-size:19px;line-height:1.15;font-weight:800}
+.scr .ln{height:6px;border-radius:3px;background:var(--cream2)}
+.scr .ln.s{width:70%;margin-inline:auto}
+.scr em{font-style:normal;color:var(--goldDeep);font-weight:700}
+.chip{display:block;padding:8px;border-radius:999px;background:var(--black);color:var(--cream);font-weight:700;font-size:11px}
+.chip.g{background:var(--gold);color:var(--black)}
+.dots i{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--gold);opacity:.7}
+.av{width:44px;height:44px;border-radius:50%;background:var(--black);margin:0 auto;border:3px solid var(--gold)}
+.pill{padding:7px;border-radius:10px;background:#fff;border:1px solid var(--cream2);font-weight:700;font-size:11px}
+/* products */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px;margin-top:44px}
+.card{background:#fff;border:1px solid var(--cream2);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.shot{background:var(--black2);padding:22px;display:grid;place-items:center;height:290px}
+.mini{width:150px;height:246px;border-radius:24px;background:#0a0a09;border:5px solid #2b2820;padding:12px 10px}
+.card .tx{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font-size:19px}
+.card p{color:var(--muted);font-size:15px;flex:1}
+.tag{align-self:flex-start;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--cream2);color:var(--muted)}
+.tag.ok{background:#e6efd9;color:#3d5a1a}
+.card .btn{margin-top:8px;padding:11px 18px;font-size:14px;border-color:var(--black)}
+.price{margin-top:30px;padding:18px 22px;border:1.5px dashed var(--gold);border-radius:16px;display:inline-block;background:#fff}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.step{border:1px solid #3a3629;border-radius:22px;padding:28px;background:var(--black2)}
+.step svg{width:48px;height:48px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:16px}
+.step h3{font-size:20px;margin-bottom:6px}
+.step p{color:var(--mutedD);font-size:15px}
+/* work */
+.work{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.slot{border:2px dashed #c9bd9f;border-radius:20px;min-height:230px;display:grid;place-items:center;text-align:center;padding:20px;color:var(--muted);background:var(--cream2);font-size:14px}
+.slot b{display:block;color:var(--ink);font-size:16px;margin-bottom:4px}
+.note{margin-top:18px;font-size:14px;color:var(--muted)}
+/* digital */
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:32px}
+.dgrid div{padding:20px;border:1px solid #c9bd9f;border-radius:16px}
+.dgrid b{display:block;margin-bottom:4px}
+.dgrid span{color:var(--muted);font-size:14px}
+/* contact */
+.contact{text-align:center}
+.contact .lead{margin-inline:auto}
+.contact .cta{justify-content:center;margin-top:28px}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin:40px auto 0;text-align:left}
+.how div{padding:18px;border-radius:16px;border:1px solid #3a3629;font-size:14px;color:var(--mutedD)}
+.how b{color:var(--cream);display:block;margin-bottom:4px}
+.soc{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px}
+.soc a{padding:10px 18px;border-radius:999px;border:1px solid #4a4538;text-decoration:none;font-size:14px}
+.soc a:hover{border-color:var(--gold)}
+footer{background:#080807;color:var(--mutedD);padding:48px 0 calc(48px + 70px);font-size:14px}
+footer .w{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer b{color:var(--cream);display:block;margin-bottom:8px}
+footer a{display:block;text-decoration:none;padding:3px 0}
+footer a:hover{color:var(--gold)}
+.copy{grid-column:1/-1;border-top:1px solid #2a271f;padding-top:20px;font-size:13px}
+.sticky{display:none}
+@media(max-width:860px){
+  .nav ul,.nav>.btn{display:none}
+  .burger{display:block}
+  .nav.open ul{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--black);padding:12px 20px 22px;gap:4px}
+  .nav.open ul a{display:block;padding:12px 0;font-size:17px}
+  .hero .w,.steps,.work,.how,footer .w{grid-template-columns:1fr}
+  .hero{padding-top:40px}.sec{padding:60px 0}
+  .stage{height:340px}
+  .sticky{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:40;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
-
 <body>
-  <main class="wrap">
 
-    <article class="card">
-      <div class="cover" aria-hidden="true">
-        <svg viewBox="0 0 400 112" preserveAspectRatio="xMidYMid slice">
-          <g fill="none" stroke="#f2b134" stroke-width="1.5">
-            <circle cx="330" cy="56" r="20" />
-            <circle cx="330" cy="56" r="38" />
-            <circle cx="330" cy="56" r="58" />
-            <circle cx="330" cy="56" r="80" />
-          </g>
-        </svg>
-      </div>
-      <img class="avatar" src="KL.png" alt="KL Digital Solutions avatar" />
-      <section class="id">
-        <h1>Key Link Digital Solutions</h1>
-        <p class="role">Digital Marketing Agency</p>
-        <p class="bio">Helping businesses grow their online presence and drive results. Say hello below.</p>
-      </section>
+<header>
+  <div class="w nav" id="nav">
+    <a class="brand" href="#home"><img src="KL.png" alt="" onerror="this.style.display='none'">Key Link Digital Solutions</a>
+    <ul id="menu">
+      <li><a href="#home">Home</a></li><li><a href="#products">Products</a></li><li><a href="#services">Services</a></li><li><a href="#work">Our Work</a></li><li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn gold" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Order Now</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
 
-      <div class="actions">
-        <button class="btn primary" id="openContact" type="button">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 12a4 4 0 100-8 4 4 0 000 8zm0 2c-3.3 0-8 1.7-8 5v1h16v-1c0-3.3-4.7-5-8-5z" />
-          </svg>Contact
-        </button>
-        <button class="btn ghost" id="shareBtn" type="button">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M18 16a3 3 0 00-2.4 1.2L8.9 13.800a3 3 0 000-3.600l6.700-3.400A3 3 0 1015 5a3 3 0 00.1.7L8.400 9.100a3 3 0 100 5.800l6.700 3.400A3 3 0 1018 16z" />
-          </svg>Share
-        </button>
+<main>
+<section class="hero" id="home">
+  <div class="w">
+    <div>
+      <h1>Personalized Gifts. Meaningful Connections.</h1>
+      <p>Turn simple moments into lasting memories with personalized NFC cards and digital experiences.</p>
+      <div class="cta">
+        <a class="btn gold" href="#products">Explore Products</a>
+        <a class="btn line" href="#how">How It Works</a>
       </div>
-
-      <nav class="links" aria-label="Social links">
-        <a class="link" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">
-          <span class="ico fb"><svg viewBox="0 0 24 24">
-              <path
-                d="M13.500 21v-8h2.700l.4-3.200h-3.100V7.800c0-.9.3-1.500 1.600-1.500h1.700V3.400c-.3 0-1.300-.1-2.400-.1-2.400 0-4 1.500-4 4.100v2.400H7.700V13h2.700v8z" />
-            </svg></span>
-          <div><b>Facebook</b><span>Follow my page</span></div><span class="chev">›</span>
-        </a>
-        <a class="link" href="https://www.instagram.com/keylink10042026/" target="_blank" rel="noopener">
-          <span class="ico ig"><svg viewBox="0 0 24 24">
-              <path
-                d="M7.500 3h9A4.500 4.500 0 0121 7.500v9a4.500 4.500 0 01-4.500 4.500h-9A4.500 4.500 0 013 16.500v-9A4.500 4.500 0 017.500 3zm0 1.800A2.700 2.700 0 004.800 7.500v9a2.700 2.700 0 002.700 2.700h9a2.700 2.700 0 002.700-2.700v-9a2.700 2.700 0 00-2.700-2.700zM12 7.500a4.500 4.500 0 110 9 4.500 4.500 0 010-9zm0 1.800a2.700 2.700 0 100 5.400 2.700 2.700 0 000-5.400zm4.800-2.900a1.100 1.100 0 110 2.200 1.100 1.100 0 010-2.200z" />
-            </svg></span>
-          <div><b>Instagram</b><span>@keylink10042026</span></div><span class="chev">›</span>
-        </a>
-        <a class="link" href="https://www.tiktok.com/@key_link1004" target="_blank" rel="noopener">
-          <span class="ico tt"><svg viewBox="0 0 24 24">
-              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
-            </svg></span>
-          <div><b>TikTok</b><span>@key_link1004</span></div><span class="chev">›</span>
-        </a>
-        <a class="link" href="mailto:keylink10042026@gmail.com">
-          <span class="ico gm"><svg viewBox="0 0 24 24">
-              <path
-                d="M3 6.500A1.500 1.500 0 014.500 5h15A1.500 1.500 0 0121 6.500v11a1.500 1.500 0 01-1.500 1.500h-15A1.500 1.500 0 013 17.500zm2 .9v.2l7 5 7-5v-.2l-.5-.4L12 11.800 5.500 7z" />
-            </svg></span>
-          <div><b>Gmail</b><span>keylink10042026@gmail.com</span></div><span class="chev">›</span>
-        </a>
-      </nav>
-    </article>
-  </main>
-
-  <div class="sheet-bg" id="sheetBg" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
-    <div class="sheet">
-      <h2 id="sheetTitle">Contact details</h2>
-      <div class="row">
-        <div><small>Phone</small><strong>+63 947 948 4028</strong></div> 
-        <a class="mini" href="tel:+639763631820">Call</a><button class="mini" data-copy="+63 976 363 1820"
-          type="button">Copy</button>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="nfc">
+        <svg class="waves" viewBox="0 0 48 48" fill="none" stroke="#8a6d2f" stroke-width="3" stroke-linecap="round"><path d="M14 10c6 8 6 20 0 28M24 6c9 11 9 25 0 36M34 2c12 14 12 30 0 44"/></svg>
+        <span class="pulse"></span><span class="pulse"></span>
+        <b>Happy Teacher's Day</b>
+        <small>Tap to open your message</small>
       </div>
-      <div class="row">
-        <div><small>Email</small><strong>keylink10042026@gmail.com</strong></div>
-        <a class="mini" href="mailto:keylink10042026@gmail.com">Email</a><button class="mini" data-copy="keylink10042026@gmail.com"
-          type="button">Copy</button>
-      </div>
-      <div class="row">
-        <div><small>Company</small><strong>Key Link Digital Solutions</strong></div>
-        <button class="mini" data-copy="Key Link Digital Solutions" type="button">Copy</button>
-      </div>
-      <button class="btn ghost close" id="closeSheet" type="button">Close</button>
+      <div class="phone"><div class="scr"><em>Sample</em><h4>Thank you, [Teacher]</h4><div class="ln"></div><div class="ln s"></div><div class="ln"></div><span class="chip g">Play video</span></div></div>
     </div>
   </div>
-  <div class="toast" id="toast" role="status"></div>
+</section>
 
-  <script>
-    (function () {
-      var bg = document.getElementById('sheetBg'), toast = document.getElementById('toast'), t;
-      function say(m) { toast.textContent = m; toast.classList.add('show'); clearTimeout(t); t = setTimeout(function () { toast.classList.remove('show') }, 1800) }
-      function copy(v) {
-        if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(v).then(function () { say('Copied') }, fallback) } else fallback();
-        function fallback() { var a = document.createElement('textarea'); a.value = v; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); say('Copied') } catch (e) { say('Copy not available') } a.remove() }
-      }
-      document.getElementById('openContact').onclick = function () { bg.classList.add('open'); document.getElementById('closeSheet').focus() };
-      function close() { bg.classList.remove('open') }
-      document.getElementById('closeSheet').onclick = close;
-      bg.addEventListener('click', function (e) { if (e.target === bg) close() });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close() });
-      document.querySelectorAll('[data-copy]').forEach(function (b) { b.onclick = function () { copy(b.dataset.copy) } });
-      document.getElementById('shareBtn').onclick = function () {
-        var d = { title: 'Key Link Digital Solutions', text: 'My digital profile', url: location.href };
-        if (navigator.share) { navigator.share(d).catch(function () { }) } else copy(location.href);
-      };
-    })();
-  </script>
+<section class="sec" id="products">
+  <div class="w">
+    <h2>Gifts that open with a tap</h2>
+    <p class="lead">Every card pairs a physical keepsake with a page only the receiver can open. The screens below are sample layouts of what each category can look like.</p>
+    <div class="grid">
+
+      <article class="card">
+        <div class="shot"><div class="mini"><div class="scr"><em>Sample layout</em><h4>Happy Teacher's Day</h4><div class="ln"></div><div class="ln s"></div><span class="chip g">Watch message</span></div></div></div>
+        <div class="tx"><span class="tag ok">Available now</span><h3>NFC Greeting Cards</h3><p>A printed card that opens a personal greeting, photo or video when tapped.</p>
+        <a class="btn" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Customize Yours</a></div>
+      </article>
+
+      <article class="card">
+        <div class="shot"><div class="mini"><div class="scr" style="text-align:left"><em>Sample layout</em><b style="font-size:13px">Dear [Name],</b><div class="ln"></div><div class="ln"></div><div class="ln s" style="margin:0"></div><div class="ln"></div><b style="font-size:12px;text-align:right">With love, [You]</b></div></div></div>
+        <div class="tx"><span class="tag">Sample layout</span><h3>Digital Letters &amp; Messages</h3><p>A heartfelt letter, written your way, that lives behind a tap.</p>
+        <a class="btn" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Ask About This</a></div>
+      </article>
+
+      <article class="card">
+        <div class="shot"><div class="mini"><div class="scr"><div class="dots"><i style="left:12px;top:14px"></i><i style="right:16px;top:30px"></i><i style="left:30px;bottom:22px"></i><i style="right:12px;bottom:40px"></i></div><em>Sample layout</em><h4>Happy Birthday, [Name]!</h4><div class="ln s"></div><span class="chip">Open your gift</span></div></div></div>
+        <div class="tx"><span class="tag">Sample layout</span><h3>Birthday &amp; Occasion Cards</h3><p>Birthdays, anniversaries and milestones with photos and a note to keep.</p>
+        <a class="btn" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Ask About This</a></div>
+      </article>
+
+      <article class="card">
+        <div class="shot"><div class="mini"><div class="scr"><em>Sample layout</em><h4>You're invited</h4><div class="pill">[Date] · [Time]</div><div class="pill">[Venue]</div><span class="chip g">RSVP</span></div></div></div>
+        <div class="tx"><span class="tag">Sample layout</span><h3>Personalized Invitations</h3><p>Event details, location and RSVP in one tap-to-open invite.</p>
+        <a class="btn" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Ask About This</a></div>
+      </article>
+
+      <article class="card">
+        <div class="shot"><div class="mini"><div class="scr"><div class="av"></div><h4 style="font-size:15px">[Your Name]</h4><div class="pill">Facebook</div><div class="pill">Instagram</div><div class="pill">Contact</div></div></div></div>
+        <div class="tx"><span class="tag">Sample layout</span><h3>Social &amp; Contact Cards</h3><p>Share your socials and contact details with one tap. <a href="profile.html">See our own profile</a>.</p>
+        <a class="btn" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Ask About This</a></div>
+      </article>
+
+    </div>
+    <p class="price"><b>Starting at ₱300</b> per personalized NFC card. Final price depends on your design. Message us to confirm.</p>
+  </div>
+</section>
+
+<section class="sec dark" id="how">
+  <div class="w">
+    <h2>How it works</h2>
+    <p class="lead">Three steps from idea to a gift someone will remember.</p>
+    <div class="steps">
+      <div class="step"><svg viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="28" rx="4"/><path d="M8 18h32M16 28h10"/></svg><h3>Choose a design and occasion</h3><p>Pick the card style that fits the moment, from thank-yous to birthdays.</p></div>
+      <div class="step"><svg viewBox="0 0 48 48"><path d="M10 38l4-12L34 6l8 8-20 20z"/><path d="M30 10l8 8"/></svg><h3>Personalize your message</h3><p>Send us your words, photos or video. We set up the digital page for you.</p></div>
+      <div class="step"><svg viewBox="0 0 48 48"><rect x="14" y="4" width="20" height="40" rx="5"/><path d="M4 18c4 4 4 8 0 12M44 18c-4 4-4 8 0 12"/></svg><h3>Tap to open</h3><p>The receiver taps the card on a compatible phone and the experience opens.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="work">
+  <div class="w">
+    <h2>Our work: the Teacher's Day card</h2>
+    <p class="lead">Our first NFC greeting card. Real photos and a tap demo will appear here as soon as they're ready.</p>
+    <div class="work">
+      <div class="slot"><div><b>Card photo</b>Photo of the Teacher's Day card coming soon</div></div>
+      <div class="slot"><div><b>Sample greeting page</b>Link to a live sample coming soon</div></div>
+      <div class="slot"><div><b>Tap demo video</b>Video of the card being tapped coming soon</div></div>
+    </div>
+    <p class="note">These slots are placeholders. Nothing here is a customer review or sales figure.</p>
+  </div>
+</section>
+
+<section class="sec" id="services" style="background:var(--cream2)">
+  <div class="w">
+    <h2>Digital solutions</h2>
+    <p class="lead">Beyond cards, we can build simple digital pages. Message us to talk about what you need.</p>
+    <div class="dgrid">
+      <div><b>Personal digital profile pages</b><span>One page for your links and contact info. <a href="profile.html">See an example</a>.</span></div>
+      <div><b>Social media link pages</b><span>All your accounts behind one link.</span></div>
+      <div><b>Simple website creation</b><span>Small, clean sites. Ask us for scope and timing.</span></div>
+      <div><b>Custom digital experiences</b><span>Have something else in mind? Tell us.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark contact" id="contact">
+  <div class="w">
+    <h2>Have an idea? Let's make it personal.</h2>
+    <p class="lead">Message our Facebook page with the occasion, who it's for and what you'd like to say. We'll reply with the next steps.</p>
+    <div class="cta"><a class="btn gold" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Order on Facebook</a><a class="btn line" href="tel:+639479484028">Call +63 947 948 4028</a></div>
+    <div class="how">
+      <div><b>1. Message us</b>Tell us the occasion and who the gift is for.</div>
+      <div><b>2. Share your content</b>Send your message, photos or video.</div>
+      <div><b>3. Confirm and receive</b>We confirm details and price, then make your card.</div>
+    </div>
+    <div class="soc">
+      <a href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/keylink10042026/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@key_link1004" target="_blank" rel="noopener">TikTok</a>
+      <a href="mailto:keylink10042026@gmail.com">keylink10042026@gmail.com</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="w">
+    <div><b>Key Link Digital Solutions</b>Personalized NFC cards and digital experiences that turn simple gifts into lasting memories.</div>
+    <div><b>Explore</b><a href="#products">Products</a><a href="#how">How it works</a><a href="#work">Our work</a><a href="#services">Services</a><a href="profile.html">Digital profile</a></div>
+    <div><b>Contact</b><a href="tel:+639479484028">+63 947 948 4028</a><a href="mailto:keylink10042026@gmail.com">keylink10042026@gmail.com</a><a href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/keylink10042026/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@key_link1004" target="_blank" rel="noopener">TikTok</a></div>
+    <p class="copy">© <span id="yr">2026</span> Key Link Digital Solutions. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="btn gold sticky" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Order on Facebook</a>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'),b=document.getElementById('burger');
+  b.onclick=function(){var o=nav.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'✕':'☰'};
+  document.querySelectorAll('#menu a').forEach(function(a){a.onclick=function(){nav.classList.remove('open');b.textContent='☰';b.setAttribute('aria-expanded','false')}});
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
 </body>
-
 </html>

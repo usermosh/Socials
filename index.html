@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Key Link Digital Solutions · Personalized NFC Gifts</title>
+<meta name="description" content="Personalized NFC cards that turn a simple gift into a message, photo or video the receiver opens with a tap.">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;500;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.className='js'</script>
+<style>
+:root{--navy:#0a1f4f;--navy2:#10306f;--navy3:#061233;--blue:#2f5fd0;--sky:#8fb0ff;--white:#fff;--mist:#f2f6fd;--mist2:#e3ebf9;--line:#d3ddf0;--ink:#0b1738;--muted:#5a6788;--mutedD:#b4c3e6;--ease:cubic-bezier(.2,.8,.2,1);
+  box-sizing:border-box}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--white);color:var(--ink);line-height:1.55;padding-bottom:env(safe-area-inset-bottom,0px)}
+a{color:inherit}
+img{max-width:100%}
+.w{width:min(1120px,100% - 40px);margin-inline:auto}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:999px;font:inherit;font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .15s,background .15s,color .15s}
+.btn:hover{transform:translateY(-1px)}
+.gold{background:var(--white);color:var(--navy)}
+.gold:hover{background:var(--mist2)}
+.line{border-color:currentColor;background:transparent}
+.line:hover{background:rgba(255,255,255,.1)}
+h1,h2,h3{letter-spacing:-.02em;line-height:1.12}
+h2{font-size:clamp(28px,4vw,42px);font-weight:800;color:var(--navy)}
+.sec{padding:84px 0}
+.dark{background:var(--navy);color:var(--white)}
+.dark h2{color:var(--white)}
+.lead{color:var(--muted);max-width:56ch;margin-top:12px;font-size:17px}
+.dark .lead{color:var(--mutedD)}
+/* nav */
+header{position:sticky;top:0;z-index:50;background:rgba(10,31,79,.95);backdrop-filter:blur(8px);color:var(--white);padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{display:flex;align-items:center;gap:24px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;text-decoration:none;font-size:17px}
+.brand img{width:34px;height:34px;border-radius:50%;object-fit:cover}
+.nav ul{display:flex;gap:26px;list-style:none;padding:0;margin:0 0 0 auto}
+.nav ul a{text-decoration:none;font-size:15px;color:var(--mutedD)}
+.nav ul a:hover{color:var(--white)}
+.nav .btn{padding:10px 20px}
+.burger{display:none;margin-left:auto;background:none;border:1.5px solid rgba(255,255,255,.3);color:var(--white);width:44px;height:44px;border-radius:12px;font-size:20px;cursor:pointer}
+/* hero */
+.hero{background:radial-gradient(900px 500px at 85% 20%,rgba(47,95,208,.45),transparent 60%),linear-gradient(160deg,var(--navy) 0%,var(--navy3) 100%);color:var(--white);padding:72px 0 90px;overflow:hidden}
+.hero .w{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(38px,6vw,68px);font-weight:800}
+.hero p{color:var(--mutedD);font-size:18px;margin:20px 0 32px;max-width:46ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.stage{position:relative;height:380px;display:grid;place-items:center}
+.nfc{width:300px;height:190px;border-radius:20px;background:linear-gradient(145deg,#fff,#e3ebf9);color:var(--navy);padding:22px;position:relative;transform:rotate(-8deg);box-shadow:0 30px 60px -15px rgba(0,0,20,.7);animation:tap 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(-8deg) translateY(-10px)}}
+.nfc b{display:block;font-size:20px;line-height:1.2;max-width:12ch}
+.nfc small{position:absolute;left:22px;bottom:18px;color:var(--blue);font-weight:700;font-size:12px}
+.waves{position:absolute;right:20px;top:20px;width:46px}
+.pulse{position:absolute;right:-36px;top:30px;width:54px;height:54px;border-radius:50%;border:2px solid var(--sky);animation:p 2.4s ease-out infinite}
+.pulse:nth-child(2){animation-delay:.8s}
+@keyframes p{from{transform:scale(.4);opacity:.9}to{transform:scale(2.2);opacity:0}}
+.phone{position:absolute;right:6%;bottom:0;width:170px;height:320px;border-radius:30px;background:#04091c;border:6px solid #1c2c5c;box-shadow:0 30px 60px -15px rgba(0,0,20,.8);padding:18px 14px;transform:rotate(5deg)}
+/* samples (mini phone screens) */
+.scr{background:var(--white);color:var(--ink);border-radius:18px;padding:16px;text-align:center;height:100%;display:flex;flex-direction:column;justify-content:center;gap:8px;font-size:12px;position:relative;overflow:hidden}
+.scr h4{font-size:19px;line-height:1.15;font-weight:800;color:var(--navy)}
+.scr .ln{height:6px;border-radius:3px;background:var(--mist2)}
+.scr .ln.s{width:70%;margin-inline:auto}
+.scr em{font-style:normal;color:var(--blue);font-weight:700}
+.chip{display:block;padding:8px;border-radius:999px;background:var(--navy);color:var(--white);font-weight:700;font-size:11px}
+.chip.g{background:var(--blue);color:var(--white)}
+.dots i{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:.5}
+.av{width:44px;height:44px;border-radius:50%;background:var(--navy);margin:0 auto;border:3px solid var(--sky)}
+.pill{padding:7px;border-radius:10px;background:var(--mist);border:1px solid var(--line);font-weight:700;font-size:11px}
+/* products */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px;margin-top:44px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(10,31,79,.45)}
+.shot{background:linear-gradient(160deg,var(--navy2),var(--navy));padding:22px;display:grid;place-items:center;height:290px}
+.mini{width:150px;height:246px;border-radius:24px;background:#04091c;border:5px solid #1c2c5c;padding:12px 10px}
+.card .tx{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font-size:19px;color:var(--navy)}
+.card p{color:var(--muted);font-size:15px;flex:1}
+.card p a{color:var(--blue);font-weight:700}
+.tag{align-self:flex-start;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--mist2);color:var(--muted)}
+.tag.ok{background:var(--navy);color:var(--white)}
+.card .btn{margin-top:8px;padding:11px 18px;font-size:14px;border-color:var(--navy);color:var(--navy)}
+.card .btn:hover{background:var(--navy);color:var(--white)}
+.price{margin-top:30px;padding:18px 22px;border:1.5px dashed var(--blue);border-radius:16px;display:inline-block;background:var(--mist);color:var(--navy)}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.step{border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:28px;background:rgba(255,255,255,.05)}
+.step svg{width:48px;height:48px;stroke:var(--sky);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:16px}
+.step h3{font-size:20px;margin-bottom:6px}
+.step p{color:var(--mutedD);font-size:15px}
+/* work */
+.work{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.slot{border:2px dashed #9db3e0;border-radius:20px;min-height:230px;display:grid;place-items:center;text-align:center;padding:20px;color:var(--muted);background:var(--white);font-size:14px}
+.slot img,.slot video{display:block;width:100%;max-height:280px;object-fit:contain;border-radius:12px}
+.slot video{background:var(--navy3)}
+.slot b{display:block;color:var(--navy);font-size:16px;margin-bottom:4px}
+.note{margin-top:18px;font-size:14px;color:var(--muted)}
+/* digital */
+.alt{background:var(--mist)}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:32px}
+.dgrid div{padding:20px;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:16px;background:var(--white)}
+.dgrid b{display:block;margin-bottom:4px;color:var(--navy)}
+.dgrid span{color:var(--muted);font-size:14px}
+.dgrid span a{color:var(--blue);font-weight:700}
+/* contact */
+.contact{text-align:center;background:radial-gradient(800px 400px at 50% 0%,rgba(47,95,208,.4),transparent 65%),var(--navy)}
+.contact .lead{margin-inline:auto}
+.contact .cta{justify-content:center;margin-top:28px}
+.how{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:820px;margin:40px auto 0;text-align:left}
+.how div{padding:18px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);font-size:14px;color:var(--mutedD)}
+.how b{color:var(--white);display:block;margin-bottom:4px}
+.soc{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px}
+.soc a{padding:10px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.28);text-decoration:none;font-size:14px}
+.soc a:hover{border-color:var(--sky);background:rgba(255,255,255,.08)}
+footer{background:var(--navy3);color:var(--mutedD);padding:48px 0 calc(48px + 70px);font-size:14px}
+footer .w{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+footer b{color:var(--white);display:block;margin-bottom:8px}
+footer a{display:block;text-decoration:none;padding:3px 0}
+footer a:hover{color:var(--sky)}
+.copy{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;font-size:13px}
+/* motion + backgrounds */
+.hero{position:relative}
+.hero .w{position:relative;z-index:2}
+.bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;animation:drift 16s ease-in-out infinite}
+.o1{width:420px;height:420px;background:#2f5fd0;left:-120px;top:-100px}
+.o2{width:360px;height:360px;background:#4a7bff;right:-80px;bottom:-120px;animation-duration:20s;animation-delay:-5s}
+.o3{width:240px;height:240px;background:#8fb0ff;left:45%;top:30%;opacity:.22;animation-delay:-9s}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(60px,40px) scale(1.12)}66%{transform:translate(-40px,70px) scale(.92)}}
+.gridbg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse at 70% 40%,#000 10%,transparent 70%);mask-image:radial-gradient(ellipse at 70% 40%,#000 10%,transparent 70%);animation:grid 12s linear infinite}
+@keyframes grid{to{background-position:48px 48px}}
+.spark{position:absolute;bottom:-10px;border-radius:50%;background:#fff;opacity:0;animation:rise linear infinite}
+@keyframes rise{0%{transform:translateY(0);opacity:0}10%{opacity:.8}100%{transform:translateY(-640px);opacity:0}}
+.hero h1,.hero p,.hero .cta{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+.hero p{animation-delay:.15s}.hero .cta{animation-delay:.3s}
+@keyframes up{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.hero .gold{animation:glow 2.8s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(143,176,255,.5)}50%{box-shadow:0 0 0 12px rgba(143,176,255,0)}}
+/* tap demo: card taps the phone, phone lights up */
+.nfc{z-index:2}
+@keyframes tap{0%,25%{transform:rotate(-8deg) translate(0,0)}45%,60%{transform:rotate(-4deg) translate(120px,50px)}80%,100%{transform:rotate(-8deg) translate(0,0)}}
+.phone{animation:wake 6s ease-in-out infinite}
+@keyframes wake{0%,40%,80%,100%{box-shadow:0 30px 60px -15px rgba(0,0,20,.8),0 0 0 rgba(143,176,255,0)}50%,60%{box-shadow:0 30px 60px -15px rgba(0,0,20,.8),0 0 70px rgba(143,176,255,.85)}}
+/* marquee */
+.marq{background:var(--white);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:18px 0}
+.track{display:inline-flex;animation:marq 32s linear infinite}
+.marq:hover .track{animation-play-state:paused}
+.track span{display:inline-flex;align-items:center;gap:56px;padding-left:56px;font-weight:800;font-size:19px;color:var(--navy)}
+.track span::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue)}
+@keyframes marq{to{transform:translateX(-50%)}}
+/* section backgrounds */
+#how.dark{background:linear-gradient(120deg,var(--navy),var(--navy2),var(--navy3),var(--navy2));background-size:300% 300%;animation:shift 16s ease infinite}
+@keyframes shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.step svg{animation:bob 4s ease-in-out infinite}
+.step:nth-child(2) svg{animation-delay:-1.3s}.step:nth-child(3) svg{animation-delay:-2.6s}
+@keyframes bob{50%{transform:translateY(-6px)}}
+.slot{background:linear-gradient(110deg,#fff 30%,var(--mist) 50%,#fff 70%);background-size:200% 100%;animation:sh 3.2s linear infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.contact{position:relative;overflow:hidden}
+.contact .w{position:relative;z-index:1}
+.ring{position:absolute;left:50%;top:50%;width:200px;height:200px;margin:-100px 0 0 -100px;border-radius:50%;border:1.5px solid rgba(143,176,255,.45);animation:ring 7s ease-out infinite;pointer-events:none}
+.ring:nth-child(2){animation-delay:-2.3s}.ring:nth-child(3){animation-delay:-4.6s}
+@keyframes ring{from{transform:scale(.5);opacity:.8}to{transform:scale(7);opacity:0}}
+/* scroll reveal */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}}
+.sticky{display:none}
+@media(max-width:860px){
+  .nav ul,.nav>.btn{display:none}
+  .burger{display:block}
+  .nav.open ul{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--navy);padding:12px 20px 22px;gap:4px}
+  .nav.open ul a{display:block;padding:12px 0;font-size:17px}
+  .hero .w,.steps,.work,.how,footer .w{grid-template-columns:1fr}
+  .hero{padding-top:40px}.sec{padding:60px 0}
+  .stage{height:340px}
+  .sticky{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:40;box-shadow:0 10px 30px rgba(0,0,30,.45)}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ===== v3 premium layer ===== */
+body{overflow-x:clip}
+/* floating glass navbar */
+header{position:fixed;left:0;right:0;top:0;background:transparent;border-bottom:0;backdrop-filter:none;-webkit-backdrop-filter:none;pointer-events:none}
+header>*{pointer-events:auto}
+header::after{content:"";position:absolute;left:0;top:0;height:2px;width:100%;transform-origin:left;transform:scaleX(var(--p,0));background:linear-gradient(90deg,var(--blue),var(--sky));pointer-events:none}
+.w.nav{position:relative;height:76px;padding:0 6px;border-radius:999px;border:1px solid transparent;transition:height .4s var(--ease),margin .4s var(--ease),padding .4s var(--ease),width .4s var(--ease),background .4s,border-color .4s,box-shadow .4s}
+header.scrolled .w.nav{width:min(1020px,100% - 28px);margin-top:10px;height:60px;padding:0 10px 0 18px;background:rgba(10,31,79,.68);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);border-color:rgba(143,176,255,.24);box-shadow:0 14px 40px -14px rgba(0,5,30,.65),inset 0 1px 0 rgba(255,255,255,.09)}
+.brand img{transition:transform .7s var(--ease),box-shadow .4s}
+.brand:hover img{transform:rotate(360deg) scale(1.1);box-shadow:0 0 0 3px rgba(143,176,255,.35)}
+.nav ul{position:relative;gap:2px}
+.nav ul a{position:relative;display:block;padding:9px 16px;transition:color .3s,transform .3s var(--ease)}
+.nav ul a:hover,.nav ul a.act{color:#fff}
+.nav ul a:hover{transform:translateY(-1px)}
+.ind{position:absolute;left:0;top:50%;height:38px;margin-top:-19px;width:0;border-radius:999px;background:rgba(143,176,255,.16);border:1px solid rgba(143,176,255,.28);opacity:0;pointer-events:none;transition:transform .5s var(--ease),width .5s var(--ease),opacity .3s}
+.nav>.btn{animation:glow 2.8s ease-in-out infinite}
+.burger{transition:transform .35s var(--ease),background .3s}
+.nav.open .burger{transform:rotate(90deg);background:rgba(255,255,255,.08)}
+/* buttons */
+.btn:not(.sticky){position:relative}
+.btn{overflow:hidden;isolation:isolate;transition:transform .35s var(--ease),color .35s,border-color .35s,box-shadow .35s}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--fill,var(--blue));transform:translateY(102%);transition:transform .45s var(--ease)}
+.btn:hover::before{transform:none}
+.btn.ar::after{content:"\2192";display:inline-block;transition:transform .35s var(--ease)}
+.btn.ar:hover::after{transform:translateX(5px)}
+.btn:active{transform:scale(.96)}
+.gold{--fill:var(--sky)}.gold:hover{background:#fff}
+.line{--fill:rgba(255,255,255,.14)}
+.card .btn{--fill:var(--navy)}
+.soc a{transition:transform .3s var(--ease),border-color .3s,background .3s}
+.soc a:hover{transform:translateY(-2px)}.soc a:active{transform:scale(.96)}
+/* hero */
+.hero{padding:150px 0 140px;background-size:100% 100%,220% 220%;animation:shift 22s ease infinite}
+.beam{position:absolute;top:-30%;width:140px;height:160%;background:linear-gradient(to bottom,rgba(143,176,255,.2),transparent 75%);filter:blur(22px);transform-origin:top;animation:beam 10s ease-in-out infinite}
+.b1{left:30%}.b2{left:62%;width:90px;animation-delay:-4s;animation-duration:13s}
+@keyframes beam{0%,100%{opacity:.25;transform:rotate(16deg)}50%{opacity:.8;transform:rotate(26deg)}}
+.spot{position:absolute;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;background:radial-gradient(circle,rgba(143,176,255,.26),transparent 62%);transform:translate3d(65vw,30vh,0)}
+.o1{translate:0 calc(var(--sy,0)*.18px)}.o2{translate:0 calc(var(--sy,0)*.32px)}.o3{translate:0 calc(var(--sy,0)*.1px)}
+.gridbg{translate:0 calc(var(--sy,0)*.08px)}
+.hero::after,#how::before,.contact::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+/* 3D tap demo */
+.stage{transform-style:preserve-3d;transform:perspective(1100px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));translate:0 calc(var(--sy,0)*-.04px)}
+.stage::before{content:"";position:absolute;bottom:-6px;left:10%;right:10%;height:36px;background:radial-gradient(ellipse,rgba(0,0,30,.55),transparent 70%);filter:blur(10px)}
+.nfc{translate:0 0 50px}
+.nfc::after{content:"";position:absolute;inset:0;border-radius:20px;pointer-events:none;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.8) 50%,transparent 60%);background-size:250% 100%;background-position:150% 0;animation:sheen 6s ease-in-out infinite}
+@keyframes sheen{0%,35%{background-position:150% 0}60%,100%{background-position:-50% 0}}
+.phone{translate:0 0 10px;animation:wake 6s ease-in-out infinite,floaty 7s ease-in-out infinite}
+@keyframes floaty{50%{translate:0 -10px 10px}}
+.phone::before{content:"";position:absolute;inset:-6px;border-radius:32px;border:2px solid var(--sky);opacity:0;animation:wave 6s ease-out infinite}
+@keyframes wave{0%,44%{transform:scale(1);opacity:0}48%{opacity:.8}72%,100%{transform:scale(1.4);opacity:0}}
+.phone .scr{animation:unlock 6s ease-in-out infinite}
+@keyframes unlock{0%,40%{filter:brightness(.5)}52%,75%{filter:brightness(1.05)}95%,100%{filter:brightness(.5)}}
+/* marquee + sheet transitions */
+.marq{margin-top:-44px;position:relative;z-index:3;border-radius:36px 36px 0 0}
+.marq::before,.marq::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
+.marq::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
+.marq::after{right:0;background:linear-gradient(270deg,#fff,transparent)}
+.track span{font-size:21px;letter-spacing:-.01em}
+.track span:nth-child(even){color:transparent;-webkit-text-stroke:1.5px var(--navy)}
+.sec{padding:84px 0 128px}
+.sec~.sec{margin-top:-44px;border-radius:44px 44px 0 0;position:relative;padding-top:128px}
+.sec>.w{position:relative;z-index:2}
+#products{position:relative;overflow:hidden}
+#products::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 320px at 92% 4%,rgba(47,95,208,.09),transparent),radial-gradient(520px 320px at 0% 96%,rgba(143,176,255,.16),transparent)}
+#how{position:relative;overflow:hidden}
+#how::after{content:"";position:absolute;inset:-20%;background:radial-gradient(40% 50% at 20% 30%,rgba(47,95,208,.4),transparent),radial-gradient(35% 45% at 80% 70%,rgba(143,176,255,.2),transparent);animation:mesh 18s ease-in-out infinite alternate;pointer-events:none}
+@keyframes mesh{to{transform:translate3d(6%,-4%,0) scale(1.15)}}
+#services{background-image:radial-gradient(rgba(47,95,208,.16) 1px,transparent 1px);background-size:26px 26px}
+/* cards + services */
+.card{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease-out,box-shadow .3s}
+.card:hover{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-6px)}
+.card::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(260px circle at var(--cx,50%) var(--cy,50%),rgba(47,95,208,.14),transparent 60%)}
+.card::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;transition:opacity .3s;border-radius:22px;padding:1.5px;background:radial-gradient(200px circle at var(--cx,50%) var(--cy,50%),var(--blue),transparent 70%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.card:hover::before,.card:hover::after{opacity:1}
+.card{position:relative}
+.mini{transition:transform .5s var(--ease)}
+.card:hover .mini{transform:translateY(-8px) rotate(-2deg)}
+.dgrid>div{position:relative;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s}
+.dgrid>div::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(47,95,208,.1),transparent);transform:translateX(-101%);transition:transform .5s var(--ease)}
+.dgrid>div:hover{transform:translateX(4px);box-shadow:0 14px 30px -18px rgba(10,31,79,.5)}
+.dgrid>div:hover::before{transform:none}
+.step{transition:transform .4s var(--ease),border-color .4s,background .4s}
+.step:hover{transform:translateY(-6px);border-color:rgba(143,176,255,.5);background:rgba(255,255,255,.09)}
+[data-count]{display:inline-block;min-width:3ch;text-align:left;font-variant-numeric:tabular-nums}
+/* scroll personalities */
+.wd{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.14em;margin-bottom:-.14em}
+.wd>span{display:inline-block;transition:transform .9s var(--ease)}
+.js .split:not(.in) .wd>span{transform:translateY(112%)}
+.js .rv.rv-s:not(.in){transform:translateY(24px) scale(.94)}
+.js .rv.rv-l:not(.in){transform:translateX(-60px)}
+.js .rv.rv-r:not(.in){transform:translateX(60px)}
+.js .rv.rv-clip{transition:opacity .6s,clip-path 1s cubic-bezier(.7,0,.2,1);transition-delay:var(--d,0s)}
+.js .rv.rv-clip:not(.in){clip-path:inset(0 100% 0 0);transform:none}
+.js .rv.rv-clip.in{clip-path:inset(0 0 0 0)}
+/* pause offscreen, light mode, touch */
+.off,.off *,.off::before,.off::after{animation-play-state:paused!important}
+.lite .orb{animation:none;filter:blur(40px)}
+.lite .spark,.lite .beam,.lite .spot,.lite #how::after{display:none}
+.lite .hero{animation:none}
+@media(hover:none){.beam{display:none}.orb{filter:blur(44px)}}
+@media(max-width:860px){
+  .w.nav{height:68px}
+  header.scrolled .w.nav{height:58px}
+  .ind{display:none}
+  .nav ul{display:flex;flex-direction:column;position:absolute;top:calc(100% + 10px);left:0;right:0;margin:0;padding:10px;gap:2px;background:rgba(6,18,51,.97);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid rgba(143,176,255,.24);border-radius:24px;box-shadow:0 24px 60px -18px rgba(0,5,30,.7);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-14px) scale(.97);transform-origin:top;transition:opacity .3s,transform .4s var(--ease),visibility 0s .4s}
+  .nav.open ul{top:calc(100% + 10px);padding:10px;gap:2px;background:rgba(6,18,51,.97);opacity:1;visibility:visible;pointer-events:auto;transform:none;transition-delay:0s}
+  .nav ul li{opacity:0;transform:translateX(-14px);transition:opacity .35s,transform .45s var(--ease)}
+  .nav.open ul li{opacity:1;transform:none;transition-delay:calc(var(--i,0)*55ms + 80ms)}
+  .nav ul li:nth-child(3){--i:1}.nav ul li:nth-child(4){--i:2}.nav ul li:nth-child(5){--i:3}.nav ul li:nth-child(6){--i:4}
+  .nav.open ul a{padding:14px 16px;border-radius:14px}
+  .nav.open ul a:hover,.nav.open ul a.act{background:rgba(143,176,255,.14)}
+  .hero{padding:104px 0 112px}
+  .sec{padding:56px 0 100px}
+  .sec~.sec{padding-top:100px;margin-top:-36px;border-radius:32px 32px 0 0}
+  .marq{margin-top:-36px;border-radius:28px 28px 0 0}
+  .track span{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="w nav" id="nav">
+    <a class="brand" href="#home"><img src="KL.png" alt="" onerror="this.style.display='none'">Key Link Digital Solutions</a>
+    <ul id="menu">
+      <li class="ind" aria-hidden="true"></li><li><a href="#home">Home</a></li><li><a href="#products">Products</a></li><li><a href="#services">Services</a></li><li><a href="#work">Our Work</a></li><li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn gold" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Order Now</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="bg" aria-hidden="true"><i class="orb o1"></i><i class="orb o2"></i><i class="orb o3"></i><div class="gridbg"></div><i class="beam b1"></i><i class="beam b2"></i><div class="spot"></div></div>
+  <div class="w">
+    <div>
+      <h1>Personalized Gifts. Meaningful Connections.</h1>
+      <p>Turn simple moments into lasting memories with personalized NFC cards and digital experiences.</p>
+      <div class="cta">
+        <a class="btn gold" href="#products">Explore Products</a>
+        <a class="btn line" href="#how">How It Works</a>
+      </div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="nfc">
+        <svg class="waves" viewBox="0 0 48 48" fill="none" stroke="#2f5fd0" stroke-width="3" stroke-linecap="round"><path d="M14 10c6 8 6 20 0 28M24 6c9 11 9 25 0 36M34 2c12 14 12 30 0 44"/></svg>
+        <span class="pulse"></span><span class="pulse"></span>
+        <b>Happy Teacher’s Day</b>
+        <small>Tap to open your message</small>
+      </div>
+      <div class="phone"><div class="scr"><em>Sample</em><h4>Thank you, [Teacher]</h4><div class="ln"></div><div class="ln s"></div><div class="ln"></div><span class="chip g">Play video</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="track"><span>Teacher’s Day</span><span>Birthdays</span><span>Anniversaries</span><span>Milestones</span><span>Invitations</span><span>Thank-yous</span><span>Social &amp; contact cards</span><span>Teacher’s Day</span><span>Birthdays</span><span>Anniversaries</span><span>Milestones</span><span>Invitations</span><span>Thank-yous</span><span>Social &amp; contact cards</span></div></div>
+
+<section class="sec" id="products">
+  <div class="w">
+    <h2>Gifts that open with a tap</h2>
+    <p class="lead">Every card pairs a physical keepsake with a page only the receiver can open. The screens below are sample layouts of what each category can look like.</p>
+    <div class="grid">
+
+      <article class="card">
+        <div class="shot"><div class="mini"><div class="scr"><em>Sample layout</em><h4>Happy Teacher’s Day</h4><div class="ln"></div><div class="ln s"></div><span class="chip g">Watch message</span></div></div></div>
+        <div class="tx"><span class="tag ok">Available now</span><h3>NFC Greeting Cards</h3><p>A printed card that opens a personal greeting, photo or video when tapped.</p>
+        <a class="btn" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Customize Yours</a></div>
+      </article>
+
+      <article class="card">
+        <div class="shot"><div class="mini"><div class="scr" style="text-align:left"><em>Sample layout</em><b style="font-size:13px;color:var(--navy)">Dear [Name],</b><div class="ln"></div><div class="ln"></div><div class="ln s" style="margin:0"></div><div class="ln"></div><b style="font-size:12px;text-align:right;color:var(--navy)">With love, [You]</b></div></div></div>
+        <div class="tx"><span class="tag">Sample layout</span><h3>Digital Letters &amp; Messages</h3><p>A heartfelt letter, written your way, that lives behind a tap.</p>
+        <a class="btn" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Ask About This</a></div>
+      </article>
+
+      <article class="card">
+        <div class="shot"><div class="mini"><div class="scr"><div class="dots"><i style="left:12px;top:14px"></i><i style="right:16px;top:30px"></i><i style="left:30px;bottom:22px"></i><i style="right:12px;bottom:40px"></i></div><em>Sample layout</em><h4>Happy Birthday, [Name]!</h4><div class="ln s"></div><span class="chip">Open your gift</span></div></div></div>
+        <div class="tx"><span class="tag">Sample layout</span><h3>Birthday &amp; Occasion Cards</h3><p>Birthdays, anniversaries and milestones with photos and a note to keep.</p>
+        <a class="btn" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Ask About This</a></div>
+      </article>
+
+      <article class="card">
+        <div class="shot"><div class="mini"><div class="scr"><em>Sample layout</em><h4>You’re invited</h4><div class="pill">[Date] · [Time]</div><div class="pill">[Venue]</div><span class="chip g">RSVP</span></div></div></div>
+        <div class="tx"><span class="tag">Sample layout</span><h3>Personalized Invitations</h3><p>Event details, location and RSVP in one tap-to-open invite.</p>
+        <a class="btn" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Ask About This</a></div>
+      </article>
+
+      <article class="card">
+        <div class="shot"><div class="mini"><div class="scr"><div class="av"></div><h4 style="font-size:15px">[Your Name]</h4><div class="pill">Facebook</div><div class="pill">Instagram</div><div class="pill">Contact</div></div></div></div>
+        <div class="tx"><span class="tag">Sample layout</span><h3>Social &amp; Contact Cards</h3><p>Share your socials and contact details with one tap. <a href="profile.html">See our own profile</a>.</p>
+        <a class="btn" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Ask About This</a></div>
+      </article>
+
+    </div>
+    <p class="price"><b>Starting at ₱<span data-count="300">300</span></b> per personalized NFC card. Final price depends on your design. Message us to confirm.</p>
+  </div>
+</section>
+
+<section class="sec dark" id="how">
+  <div class="w">
+    <h2>How it works</h2>
+    <p class="lead">Three steps from idea to a gift someone will remember.</p>
+    <div class="steps">
+      <div class="step"><svg viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="28" rx="4"/><path d="M8 18h32M16 28h10"/></svg><h3>Choose a design and occasion</h3><p>Pick the card style that fits the moment, from thank-yous to birthdays.</p></div>
+      <div class="step"><svg viewBox="0 0 48 48"><path d="M10 38l4-12L34 6l8 8-20 20z"/><path d="M30 10l8 8"/></svg><h3>Personalize your message</h3><p>Send us your words, photos or video. We set up the digital page for you.</p></div>
+      <div class="step"><svg viewBox="0 0 48 48"><rect x="14" y="4" width="20" height="40" rx="5"/><path d="M4 18c4 4 4 8 0 12M44 18c-4 4-4 8 0 12"/></svg><h3>Tap to open</h3><p>The receiver taps the card on a compatible phone and the experience opens.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="w">
+    <h2>Digital solutions</h2>
+    <p class="lead">Beyond cards, we can build simple digital pages. Message us to talk about what you need.</p>
+    <div class="dgrid">
+      <div><b>Personal digital profile pages</b><span>One page for your links and contact info. <a href="profile.html">See an example</a>.</span></div>
+      <div><b>Social media link pages</b><span>All your accounts behind one link.</span></div>
+      <div><b>Simple website creation</b><span>Small, clean sites. Ask us for scope and timing.</span></div>
+      <div><b>Custom digital experiences</b><span>Have something else in mind? Tell us.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="work">
+  <div class="w">
+    <h2>Our work: the Teacher’s Day card</h2>
+    <p class="lead">Our first NFC greeting card and digital greeting experience.</p>
+    <div class="work">
+      <div class="slot"><div><b>Card photo</b><img src="assets/cardsample.jpg" alt="Teacher’s Day greeting card sample"></div></div>
+      <div class="slot"><div><b>Sample greeting page</b><img src="assets/greetpage.png" alt="Teacher’s Day digital greeting page"></div></div>
+      <div class="slot"><div><b>Tap demo video</b><video src="assets/greetvid.mp4" poster="assets/greetSample.png" controls preload="metadata">Your browser does not support the video tag.</video></div></div>
+    </div>
+    <p class="note">These slots are placeholders. Nothing here is a customer review or sales figure.</p>
+  </div>
+</section>
+
+<section class="sec dark contact" id="contact">
+  <span class="ring"></span><span class="ring"></span><span class="ring"></span>
+  <div class="w">
+    <h2>Have an idea? Let’s make it personal.</h2>
+    <p class="lead">Message our Facebook page with the occasion, who it’s for and what you’d like to say. We’ll reply with the next steps.</p>
+    <div class="cta"><a class="btn gold" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Order on Facebook</a><a class="btn line" href="tel:+639479484028">Call +63 947 948 4028</a></div>
+    <div class="how">
+      <div><b>1. Message us</b>Tell us the occasion and who the gift is for.</div>
+      <div><b>2. Share your content</b>Send your message, photos or video.</div>
+      <div><b>3. Confirm and receive</b>We confirm details and price, then make your card.</div>
+    </div>
+    <div class="soc">
+      <a href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/keylink10042026/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@key_link1004" target="_blank" rel="noopener">TikTok</a>
+      <a href="mailto:keylink10042026@gmail.com">keylink10042026@gmail.com</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="w">
+    <div><b>Key Link Digital Solutions</b>Personalized NFC cards and digital experiences that turn simple gifts into lasting memories.</div>
+    <div><b>Explore</b><a href="#products">Products</a><a href="#how">How it works</a><a href="#work">Our work</a><a href="#services">Services</a><a href="profile.html">Digital profile</a></div>
+    <div><b>Contact</b><a href="tel:+639479484028">+63 947 948 4028</a><a href="mailto:keylink10042026@gmail.com">keylink10042026@gmail.com</a><a href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/keylink10042026/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@key_link1004" target="_blank" rel="noopener">TikTok</a></div>
+    <p class="copy">© <span id="yr">2026</span> Key Link Digital Solutions. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="btn gold sticky" href="https://www.facebook.com/profile.php?id=61594992337205" target="_blank" rel="noopener">Order on Facebook</a>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'),b=document.getElementById('burger');
+  b.onclick=function(){var o=nav.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'✕':'☰'};
+  document.querySelectorAll('#menu a').forEach(function(a){a.onclick=function(){nav.classList.remove('open');b.textContent='☰';b.setAttribute('aria-expanded','false')}});
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  var bg=document.querySelector('.hero .bg');
+  if(bg&&!matchMedia('(prefers-reduced-motion:reduce)').matches&&((navigator.hardwareConcurrency||8)>4)){for(var i=0;i<(matchMedia('(hover:hover)').matches?16:7);i++){var sp=document.createElement('i');sp.className='spark';sp.style.left=Math.random()*100+'%';var z=3+Math.random()*5;sp.style.width=sp.style.height=z+'px';sp.style.animationDuration=(7+Math.random()*9)+'s';sp.style.animationDelay=(-Math.random()*14)+'s';bg.appendChild(sp)}}
+  var els=document.querySelectorAll('.card,.step,.dgrid>div,.slot,.how>div,.price,.sec .lead');
+  function tag(sel,fn){document.querySelectorAll(sel).forEach(function(el,i){el.classList.add(fn(i))})}
+  tag('.card',function(){return 'rv-s'});
+  tag('.step',function(i){return ['rv-l','rv-u','rv-r'][i%3]});
+  tag('.dgrid>div',function(i){return i%2?'rv-r':'rv-l'});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var t=e.target;t.classList.add('in');io.unobserve(t);setTimeout(function(){t.classList.remove('rv','in')},1400)}})},{threshold:.15});
+    els.forEach(function(el){var n=Array.prototype.indexOf.call(el.parentNode.children,el);el.style.setProperty('--d',(n%4)*0.1+'s');el.classList.add('rv');io.observe(el)});
+  }
+
+  /* ===== v3 interactions ===== */
+  var rm=matchMedia('(prefers-reduced-motion:reduce)').matches,
+      fine=matchMedia('(hover:hover) and (pointer:fine)').matches,
+      lite=(navigator.hardwareConcurrency||8)<=4||(navigator.deviceMemory||8)<=4,
+      root=document.documentElement,hdr=document.querySelector('header');
+  if(lite)root.classList.add('lite');
+  document.querySelectorAll('.btn').forEach(function(x){x.classList.add('ar')});
+  /* nav: scrolled state, progress, parallax var */
+  var hero=document.querySelector('.hero'),tk=false;
+  function onScroll(){tk=false;var y=window.scrollY,h=root.scrollHeight-innerHeight;
+    hdr.classList.toggle('scrolled',y>24);
+    hdr.style.setProperty('--p',h>0?(y/h).toFixed(4):0);
+    if(!rm&&y<1200)hero.style.setProperty('--sy',y)}
+  addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
+  /* nav: sliding indicator + scrollspy */
+  var links=[].slice.call(document.querySelectorAll('#menu a')),ind=document.querySelector('#menu .ind'),cur=links[0];
+  function mv(a){if(!a||!ind)return;ind.style.width=a.offsetWidth+'px';ind.style.transform='translateX('+a.offsetLeft+'px)';ind.style.opacity=1}
+  function setCur(a){cur=a;links.forEach(function(l){l.classList.toggle('act',l===a)});mv(a)}
+  links.forEach(function(a){a.addEventListener('mouseenter',function(){mv(a)})});
+  document.getElementById('menu').addEventListener('mouseleave',function(){mv(cur)});
+  setCur(links[0]);addEventListener('resize',function(){mv(cur)});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){mv(cur)});
+  if('IntersectionObserver' in window){
+    var spy=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var a=links.filter(function(l){return l.getAttribute('href')==='#'+e.target.id})[0];if(a)setCur(a)}})},{rootMargin:'-40% 0px -55% 0px'});
+    ['home','products','work','services','contact'].forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(el)});
+    /* pause animations offscreen */
+    var off=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('off',!e.isIntersecting)})});
+    document.querySelectorAll('.hero,.marq,#how,.contact').forEach(function(el){off.observe(el)});
+    /* word-by-word headings */
+    var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target)}})},{threshold:.4});
+    document.querySelectorAll('.sec h2').forEach(function(h){var t=h.textContent.trim();h.setAttribute('aria-label',t);h.textContent='';
+      t.split(/\s+/).forEach(function(w,i){var o=document.createElement('span');o.className='wd';o.setAttribute('aria-hidden','true');var n=document.createElement('span');n.textContent=w;n.style.transitionDelay=i*60+'ms';o.appendChild(n);h.appendChild(o);h.appendChild(document.createTextNode(' '))});
+      h.classList.add('split');io2.observe(h)});
+  }
+  /* mobile menu: close on Esc / outside tap */
+  function closeMenu(){nav.classList.remove('open');b.textContent='\u2630';b.setAttribute('aria-expanded','false')}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu()});
+  document.addEventListener('click',function(e){if(nav.classList.contains('open')&&!nav.contains(e.target))closeMenu()});
+  /* sparks: fewer on touch */
+  /* price counter (genuine number) */
+  var cn=document.querySelector('[data-count]');
+  if(cn&&!rm&&'IntersectionObserver' in window){var to=+cn.dataset.count;cn.textContent='0';
+    new IntersectionObserver(function(es,o){if(es[0].isIntersecting){o.disconnect();var t0=performance.now();(function f(t){var k=Math.min(1,(t-t0)/1200);cn.textContent=Math.round(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0)}},{threshold:.6}).observe(cn)}
+  /* desktop: hero mouse light + 3D tilt, card tilt + spotlight */
+  if(fine&&!rm&&!lite){
+    var spot=hero.querySelector('.spot'),st=hero.querySelector('.stage'),tx=0,ty=0,x=0,y=0,run=false,hr;
+    function loop(){x+=(tx-x)*.12;y+=(ty-y)*.12;spot.style.transform='translate3d('+x+'px,'+y+'px,0)';
+      st.style.setProperty('--ry',((x/hr.width-.5)*14).toFixed(2)+'deg');st.style.setProperty('--rx',(-(y/hr.height-.5)*10).toFixed(2)+'deg');
+      if(Math.abs(tx-x)+Math.abs(ty-y)>.5)requestAnimationFrame(loop);else run=false}
+    function kick(){if(!run){run=true;requestAnimationFrame(loop)}}
+    hero.addEventListener('pointermove',function(e){hr=hero.getBoundingClientRect();tx=e.clientX-hr.left;ty=e.clientY-hr.top;kick()});
+    hero.addEventListener('pointerleave',function(){if(hr){tx=hr.width/2;ty=hr.height/2;kick()}});
+    document.querySelectorAll('.card').forEach(function(c){
+      c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
+        c.style.setProperty('--cx',px*100+'%');c.style.setProperty('--cy',py*100+'%');
+        c.style.setProperty('--ry',((px-.5)*10).toFixed(2)+'deg');c.style.setProperty('--rx',((.5-py)*8).toFixed(2)+'deg')});
+      c.addEventListener('pointerleave',function(){c.style.setProperty('--rx','0deg');c.style.setProperty('--ry','0deg')})});
+  }
+})();
+</script>
+</body>
+</html>
